@@ -1,0 +1,62 @@
+.datatable {
+    &-features {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      align-items: center;
+    }
+    &-sort {
+      width: 20%;
+      & option,
+      select {
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      & select {
+        margin: 0 0.3rem;
+      }
+    }
+  }
+  .datatable-title {
+    text-align: center;
+  }
+  .table {
+    width: 100%;
+    border: 5px solid #6d8519;
+  
+    //height: 100vh;
+    border-collapse: collapse;
+    &-body {
+      & tr {
+        height: 2.5rem;
+        text-transform: capitalize;
+      }
+    }
+    &-icon {
+      margin-left: 0.5rem;
+    }
+    &-head {
+      &-row {
+        &-title {
+          border-bottom: 2px solid black;
+          text-transform: capitalize;
+          font-size: 1.2rem;
+          padding: 0.5rem 0;
+        }
+      }
+    }
+  }
+  #search {
+    margin-left: 0.3rem;
+  }
+  
+  .odd-row {
+    border: 1px solid rgb(241, 235, 235);
+    background-color: #f9f9f9;
+  }
+  
+  .odd-row,
+  .even-row {
+    height: 2rem;
+  }
+  
