@@ -55,14 +55,7 @@ function Pagination(props) {
     <div className="pagination">
       <div className="pagination-details">
         <p className="pagination-details-content">
-          Showing
-          {start + 1}
-          to
-          {entryEnd}
-          of
-          {totalEntries}
-          entries
-          {" "}
+          Showing {start + 1} to {entryEnd} of {totalEntries} entries 
         </p>
       </div>
       <nav className="pagination-nav">

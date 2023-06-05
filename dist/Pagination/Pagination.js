@@ -59,7 +59,7 @@ function Pagination(props) {
     className: "pagination-details"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "pagination-details-content"
-  }, "Showing", start + 1, "to", entryEnd, "of", totalEntries, "entries", " ")), /*#__PURE__*/_react.default.createElement("nav", {
+  }, "Showing ", start + 1, " to ", entryEnd, " of ", totalEntries, " entries")), /*#__PURE__*/_react.default.createElement("nav", {
     className: "pagination-nav"
   }, /*#__PURE__*/_react.default.createElement("ul", {
     className: "pagination-list"
