@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./datatable.scss";
 import Pagination from "../Pagination/Pagination";
-import { FaSort } from "react-icons";
-import { FaSortUp } from "react-icons"
-import { FaSortDown } from "react-icons"
+import { FaSort } from "react-icons/fa";
+import { FaSortUp } from "react-icons/fa"
+import { FaSortDown } from "react-icons/fa"
 
 function Datatable({ columnTitle, datas }) {
   const [currentPage, setCurrentPage] = useState(1);
