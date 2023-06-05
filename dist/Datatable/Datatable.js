@@ -14,6 +14,7 @@ require("core-js/modules/es.parse-int.js");
 var _react = _interopRequireWildcard(require("react"));
 require("./datatable.scss");
 var _Pagination = _interopRequireDefault(require("../Pagination/Pagination"));
+var _reactIcons = require("react-icons");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -77,24 +78,16 @@ function Datatable(_ref) {
     setIndexOfLastEntry(indexOfLastEntry);
     setIndexOfFirstEntry(indexOfFirstEntry);
   }, [currentPage, entriesPerPage]);
-
-  // Change page
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
-
-  // Sort datas by entries selected
   const handleClickSelect = e => {
     const value = e.target.value;
     setEntriesPerPage(parseInt(value));
     setCurrentPage(1);
   };
-
-  // when the user clicks on filter"s icon
   const handleClickIcon = index => {
-    // if index is the index of the clicked column
     if (index === clickedColumnIndex) {
-      // if the click counter is equal to 2, we reset it to 0 otherwise we add 1
       const newClickCount = clickCount === 2 ? 0 : clickCount + 1;
       setClickCount(newClickCount);
     } else {
@@ -104,8 +97,6 @@ function Datatable(_ref) {
     setCurrentPage(1);
     setIndexColumn(index);
   };
-
-  // search term
   const handleChange = e => {
     const {
       value
@@ -147,27 +138,15 @@ function Datatable(_ref) {
   }, columnTitle.map((elt, index) => {
     let iconElement;
     if (index !== clickedColumnIndex || clickCount === 0) {
-      iconElement = /*#__PURE__*/_react.default.createElement("i", {
-        className: "fa-solid fa-sort",
-        style: {
-          color: "#e1e2e5"
-        },
+      iconElement = /*#__PURE__*/_react.default.createElement(_reactIcons.FaSort, {
         id: index
       });
     } else if (clickCount === 1) {
-      iconElement = /*#__PURE__*/_react.default.createElement("i", {
-        className: "fa-solid fa-sort-up",
-        style: {
-          color: "#888EE0"
-        },
+      iconElement = /*#__PURE__*/_react.default.createElement(_reactIcons.FaSortUp, {
         id: index
       });
     } else if (clickCount === 2) {
-      iconElement = /*#__PURE__*/_react.default.createElement("i", {
-        className: "fa-solid fa-sort-down",
-        style: {
-          color: "##888EE0"
-        },
+      iconElement = /*#__PURE__*/_react.default.createElement(_reactIcons.FaSortDown, {
         id: index
       });
     }
