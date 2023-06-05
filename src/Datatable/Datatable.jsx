@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./datatable.scss";
 import Pagination from "../Pagination/Pagination";
+import { FaSort } from "react-icons";
+import { FaSortUp } from "react-icons"
+import { FaSortDown } from "react-icons"
 
 function Datatable({ columnTitle, datas }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -80,23 +83,18 @@ function Datatable({ columnTitle, datas }) {
     setIndexOfFirstEntry(indexOfFirstEntry);
   }, [currentPage, entriesPerPage]);
 
-  // Change page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Sort datas by entries selected
   const handleClickSelect = (e) => {
     const value = e.target.value;
     setEntriesPerPage(parseInt(value));
     setCurrentPage(1);
   };
 
-  // when the user clicks on filter"s icon
   const handleClickIcon = (index) => {
-    // if index is the index of the clicked column
     if (index === clickedColumnIndex) {
-      // if the click counter is equal to 2, we reset it to 0 otherwise we add 1
       const newClickCount = clickCount === 2 ? 0 : clickCount + 1;
       setClickCount(newClickCount);
     } else {
@@ -107,7 +105,6 @@ function Datatable({ columnTitle, datas }) {
     setIndexColumn(index);
   };
 
-  // search term
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchTerm(value);
@@ -148,25 +145,19 @@ function Datatable({ columnTitle, datas }) {
               let iconElement;
               if (index !== clickedColumnIndex || clickCount === 0) {
                 iconElement = (
-                  <i
-                    className="fa-solid fa-sort"
-                    style={{ color: "#e1e2e5" }}
+                  <FaSort 
                     id={index}
                   />
                 );
               } else if (clickCount === 1) {
                 iconElement = (
-                  <i
-                    className="fa-solid fa-sort-up"
-                    style={{ color: "#888EE0" }}
+                  <FaSortUp 
                     id={index}
                   />
                 );
               } else if (clickCount === 2) {
                 iconElement = (
-                  <i
-                    className="fa-solid fa-sort-down"
-                    style={{ color: "##888EE0" }}
+                  <FaSortDown 
                     id={index}
                   />
                 );

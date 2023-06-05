@@ -19,6 +19,7 @@ You can easily navigate from one page to another via the pagination tab.
 
 ## Requirements
 - React 18.2.0
+- Sass
 
 ## Installation
 - using NPM : `npm install datatable-hrnet `
@@ -31,7 +32,56 @@ This plugin requires 2 props: columnTitle and datas.
 - datas : contains the data for the rows.
 
 ### Example
+* MyComponents.jsx
 
-MyComponents.jsx
+```
+import React from "react";
+import data from "./data/datas.js;
+import title from "./data/titleTable.js;
+import Datatable from "datatable-hrnet";
 
-datas.js
+function MyComponent() {
+    return (
+        <div className="mycomponent">
+            <Datatable 
+                datas = {data} 
+                columnTitle = {title}
+            />
+        </div>
+    );
+}
+
+export default MyComponent;
+````
+
+* datas.js (example for datas' props)
+
+```
+export default [
+    {
+        firstname: "Emily",
+        lastname: "Johnson",
+        dateOfBirth: "12/15/1988",
+        startDate: "07/01/2023",
+        street: "111 Maple St",
+        city: "San Francisco",
+        state: "CA",
+        code: "94102",
+        department: "Sales",
+    }
+];
+```
+* titleTable.js (example for columnTitle's props)
+```
+export default [
+    "first name",
+    "last name",
+    "start date",
+    "department",
+    "date of birth",
+    "street",
+    "city",
+    "state",
+    "zip code",
+];
+```
