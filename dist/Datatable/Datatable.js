@@ -152,8 +152,7 @@ function Datatable(_ref) {
   }, "100")), "entries")), /*#__PURE__*/_react.default.createElement("div", {
     className: "datatable-search"
   }, /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "search",
-    id: "search"
+    htmlFor: "search"
   }, "Search :"), /*#__PURE__*/_react.default.createElement("input", {
     id: "search",
     type: "text",
