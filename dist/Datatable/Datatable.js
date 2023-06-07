@@ -18,6 +18,14 @@ var _fa = require("react-icons/fa");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+/**
+ * This component represents a data table.
+ *
+ * @param {Object} props - The props object.
+ * @param {Array} props.columnTitle - The array of column titles for the table.
+ * @param {Array} props.datas - The array of data objects to display in the table.
+ * @returns {JSX.Element} - The data table component.
+ */
 function Datatable(_ref) {
   let {
     columnTitle,
@@ -78,16 +86,33 @@ function Datatable(_ref) {
     setIndexOfLastEntry(indexOfLastEntry);
     setIndexOfFirstEntry(indexOfFirstEntry);
   }, [currentPage, entriesPerPage]);
+
+  /**
+   *  Displays the page change.
+   * @param {String} pageNumber the number page selected
+   */
   const handlePageChange = pageNumber => {
     setCurrentPage(pageNumber);
   };
+
+  /**
+   * Displays the number of rows in the datatable based on the number of selected entries.
+   * @param {Event} e 
+   */
   const handleClickSelect = e => {
     const value = e.target.value;
     setEntriesPerPage(parseInt(value));
     setCurrentPage(1);
   };
+
+  /**
+   *  Displays the corresponding icon based on the number of clicks.
+   * @param {String} index 
+   */
   const handleClickIcon = index => {
+    // if index is the index of the clicked column
     if (index === clickedColumnIndex) {
+      // if the click counter is equal to 2, we reset it to 0 otherwise we add 1
       const newClickCount = clickCount === 2 ? 0 : clickCount + 1;
       setClickCount(newClickCount);
     } else {
@@ -97,6 +122,11 @@ function Datatable(_ref) {
     setCurrentPage(1);
     setIndexColumn(index);
   };
+
+  /**
+   * Diplays the results based on the term entered.
+   * @param {Event} e 
+   */
   const handleChange = e => {
     const {
       value

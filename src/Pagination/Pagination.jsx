@@ -1,6 +1,14 @@
 import React, { useEffect } from "react";
 import "./pagination.scss";
 
+/**
+   * Generates an array of numbers within a specified range.
+   *
+   * @param {number} from - The starting value of the range.
+   * @param {number} to - The ending value of the range.
+   * @param {number} [step=1] - The step size between numbers in the range.
+   * @returns {number[]} - An array of numbers within the specified range.
+   */
 function Pagination(props) {
   const {
     entriesPerPage,
@@ -12,10 +20,13 @@ function Pagination(props) {
     setCurrentPage,
   } = props;
 
+  // Calculates the total number of pages.
   const numberPages = Math.ceil(totalEntries / entriesPerPage);
+  // calculate number of pages from the first page
   const distanceFromStart = currentPage - 1;
+  // calculate number of pages to the final page
   const distanceFromEnd = numberPages - currentPage;
-
+  // array of pages
   let pages = [];
 
   const startingPage = distanceFromStart >= 4 ? currentPage - 1 : 2;
@@ -25,6 +36,14 @@ function Pagination(props) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
+  /**
+   * Generates an array of numbers within a specified range.
+   *
+   * @param {number} from - The starting value of the range.
+   * @param {number} to - The ending value of the range.
+   * @param {number} [step=1] - The step size between numbers in the range.
+   * @returns {number[]} - An array of numbers within the specified range.
+   */
   const range = (from, to, step = 1) => {
     let i = from;
     const numberpages = [];
@@ -48,7 +67,7 @@ function Pagination(props) {
     const rangePages = range(numberPages - 4, numberPages - 1);
     pages = rangePages;
   }
-
+  // Calculates the index of the last entry.
   const entryEnd = numberPages === currentPage ? totalEntries : end;
 
   return (

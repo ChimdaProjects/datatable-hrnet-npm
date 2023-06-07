@@ -10,6 +10,14 @@ var _react = _interopRequireWildcard(require("react"));
 require("./pagination.scss");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+/**
+   * Generates an array of numbers within a specified range.
+   *
+   * @param {number} from - The starting value of the range.
+   * @param {number} to - The ending value of the range.
+   * @param {number} [step=1] - The step size between numbers in the range.
+   * @returns {number[]} - An array of numbers within the specified range.
+   */
 function Pagination(props) {
   const {
     entriesPerPage,
@@ -20,9 +28,14 @@ function Pagination(props) {
     currentPage,
     setCurrentPage
   } = props;
+
+  // Calculates the total number of pages.
   const numberPages = Math.ceil(totalEntries / entriesPerPage);
+  // calculate number of pages from the first page
   const distanceFromStart = currentPage - 1;
+  // calculate number of pages to the final page
   const distanceFromEnd = numberPages - currentPage;
+  // array of pages
   let pages = [];
   const startingPage = distanceFromStart >= 4 ? currentPage - 1 : 2;
   const endingPage = distanceFromEnd >= 4 ? currentPage + 1 : numberPages - 1;
@@ -32,6 +45,15 @@ function Pagination(props) {
       behavior: "smooth"
     });
   }, [currentPage]);
+
+  /**
+   * Generates an array of numbers within a specified range.
+   *
+   * @param {number} from - The starting value of the range.
+   * @param {number} to - The ending value of the range.
+   * @param {number} [step=1] - The step size between numbers in the range.
+   * @returns {number[]} - An array of numbers within the specified range.
+   */
   const range = function range(from, to) {
     let step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
     let i = from;
@@ -52,6 +74,7 @@ function Pagination(props) {
     const rangePages = range(numberPages - 4, numberPages - 1);
     pages = rangePages;
   }
+  // Calculates the index of the last entry.
   const entryEnd = numberPages === currentPage ? totalEntries : end;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "pagination"

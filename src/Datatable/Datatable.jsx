@@ -5,6 +5,14 @@ import { FaSort } from "react-icons/fa";
 import { FaSortUp } from "react-icons/fa"
 import { FaSortDown } from "react-icons/fa"
 
+/**
+ * This component represents a data table.
+ *
+ * @param {Object} props - The props object.
+ * @param {Array} props.columnTitle - The array of column titles for the table.
+ * @param {Array} props.datas - The array of data objects to display in the table.
+ * @returns {JSX.Element} - The data table component.
+ */
 function Datatable({ columnTitle, datas }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [entriesPerPage, setEntriesPerPage] = useState(10);
@@ -83,18 +91,32 @@ function Datatable({ columnTitle, datas }) {
     setIndexOfFirstEntry(indexOfFirstEntry);
   }, [currentPage, entriesPerPage]);
 
+  /**
+   *  Displays the page change.
+   * @param {String} pageNumber the number page selected
+   */
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  /**
+   * Displays the number of rows in the datatable based on the number of selected entries.
+   * @param {Event} e 
+   */
   const handleClickSelect = (e) => {
     const value = e.target.value;
     setEntriesPerPage(parseInt(value));
     setCurrentPage(1);
   };
 
+  /**
+   *  Displays the corresponding icon based on the number of clicks.
+   * @param {String} index 
+   */
   const handleClickIcon = (index) => {
+    // if index is the index of the clicked column
     if (index === clickedColumnIndex) {
+      // if the click counter is equal to 2, we reset it to 0 otherwise we add 1
       const newClickCount = clickCount === 2 ? 0 : clickCount + 1;
       setClickCount(newClickCount);
     } else {
@@ -105,6 +127,10 @@ function Datatable({ columnTitle, datas }) {
     setIndexColumn(index);
   };
 
+  /**
+   * Diplays the results based on the term entered.
+   * @param {Event} e 
+   */
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchTerm(value);
