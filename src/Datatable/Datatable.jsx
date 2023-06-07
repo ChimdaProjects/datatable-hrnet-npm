@@ -153,7 +153,7 @@ function Datatable({ columnTitle, datas }) {
           </p>
         </div>
         <div className="datatable-search">
-          <label htmlFor="search" id="search">
+          <label htmlFor="search">
             Search :
           </label>
           <input
