@@ -37,7 +37,7 @@ function Pagination(props) {
     let i = from;
     const numberpages = [];
     while (i <= to) {
-      range.push(i);
+      numberpages.push(i);
       i += step;
     }
     return numberpages;

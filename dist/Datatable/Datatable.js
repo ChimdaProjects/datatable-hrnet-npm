@@ -128,7 +128,8 @@ function Datatable(_ref) {
     id: "search",
     type: "text",
     value: searchTerm,
-    onChange: handleChange
+    onChange: handleChange,
+    placeholder: "Search by keywords..."
   }))), /*#__PURE__*/_react.default.createElement("table", {
     className: "table"
   }, /*#__PURE__*/_react.default.createElement("thead", {
@@ -139,15 +140,24 @@ function Datatable(_ref) {
     let iconElement;
     if (index !== clickedColumnIndex || clickCount === 0) {
       iconElement = /*#__PURE__*/_react.default.createElement(_fa.FaSort, {
-        id: index
+        id: index,
+        style: {
+          color: "#e1e2e5"
+        }
       });
     } else if (clickCount === 1) {
       iconElement = /*#__PURE__*/_react.default.createElement(_fa.FaSortUp, {
-        id: index
+        id: index,
+        style: {
+          color: "##888EE0"
+        }
       });
     } else if (clickCount === 2) {
       iconElement = /*#__PURE__*/_react.default.createElement(_fa.FaSortDown, {
-        id: index
+        id: index,
+        style: {
+          color: "#888EE0"
+        }
       });
     }
     return /*#__PURE__*/_react.default.createElement("th", {
