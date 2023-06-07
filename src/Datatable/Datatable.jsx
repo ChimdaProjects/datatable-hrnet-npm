@@ -135,6 +135,7 @@ function Datatable({ columnTitle, datas }) {
             type="text"
             value={searchTerm}
             onChange={handleChange}
+            placeholder="Search by keywords..."
           />
         </div>
       </div>
@@ -147,18 +148,21 @@ function Datatable({ columnTitle, datas }) {
                 iconElement = (
                   <FaSort 
                     id={index}
+                    style={{ color: "#e1e2e5" }}
                   />
                 );
               } else if (clickCount === 1) {
                 iconElement = (
                   <FaSortUp 
                     id={index}
+                    style={{ color: "##888EE0" }}
                   />
                 );
               } else if (clickCount === 2) {
                 iconElement = (
                   <FaSortDown 
                     id={index}
+                    style={{ color: "#888EE0" }}
                   />
                 );
               }
